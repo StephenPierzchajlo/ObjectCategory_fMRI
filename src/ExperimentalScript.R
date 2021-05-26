@@ -35,7 +35,7 @@ for (i in 1:length(list.files(parent.folder, recursive = FALSE))) {
   c <- 1
   
   # Chain of directory locations.
-  Dir1 <- paste0("D:/ObjectCategory_fMRI/data/BIDS_input/", list.files(parent.folder, recursive = FALSE)[i])
+  Dir1 <- paste0("D:/ObjectCategory_fMRI/data/RawData/", list.files(parent.folder, recursive = FALSE)[i])
   Dir2 <- paste0(Dir1, "/", list.files(Dir1, recursive = FALSE)[1])
   Dir3 <- paste0(Dir2, "/", list.files(Dir2, "Behavioural"))
   Dir4 <- paste0(Dir3, "/")
@@ -86,7 +86,7 @@ for (i in 1:length(list.files(parent.folder, recursive = FALSE))) {
   c <- 1
   
   # Chain of directory locations.
-  Dir1 <- paste0("D:/ObjectCategory_fMRI/data/BIDS_input/", list.files(parent.folder, recursive = FALSE)[i])
+  Dir1 <- paste0("D:/ObjectCategory_fMRI/data/RawData/", list.files(parent.folder, recursive = FALSE)[i])
   Dir2 <- paste0(Dir1, "/", list.files(Dir1, recursive = FALSE)[1])
   Dir3 <- paste0(Dir2, "/", list.files(Dir2, "Behavioural"))
   Dir4 <- paste0(Dir3, "/")
@@ -184,33 +184,34 @@ for (i in 1:length(list.files(parent.folder, recursive = FALSE))) {
     
     # Next participant.
     c <- c + 1
+    
   }
   
-  # Remove excess variables.
-  rm(filelist, c, Dir1, Dir2, Dir3, Dir4, i, j)
 }
-
-# Remove parent.folder
-rm(parent.folder)
-
 
 
 # ----------------------------------- make folders  ---------------------------------
 
-# Create directory path.
-#parent.folder <- "D:/ObjectCategory_fMRI/data/BIDS_input"
-#setwd(parent.folder)
-#subDir <- "sub-01"
-#dir.create(file.path(parent.folder, subDir), showWarnings = FALSE)
+# Participant List
+Participant_List <- list("sub-01", "sub-02", "sub-03", "sub-04")
 
-for (i in list("sub-01", "sub-02", "sub-03", "sub-04")) {
+# Loop makes directories if they don't exist.
+for (i in Participant_List) {
   
   # Set working dierctory.
   parent.folder <- "D:/ObjectCategory_fMRI/data/BIDS_input"
   
+  # Make these directories if they don't exist.
   if (!file.exists(i)) {
     
-    dir.create(file.path(parent.folder, i), showWarnings = FALSE)
+    # Directory creation.
+    dir.create(file.path(parent.folder, i), showWarnings = FALSE) # Participant directory.
+    dir.create(paste0(file.path(parent.folder, i), "/anat"), showWarnings = FALSE) # anat sub-directory.
+    dir.create(paste0(file.path(parent.folder, i), "/func"), showWarnings = FALSE) # func sub-directory.
     
   }
-  }
+  
+}
+
+# Remove excess variables.
+rm(filelist, c, Dir1, Dir2, Dir3, Dir4, i, j, parent.folder, Dir1_a, Dir1_b, Dir2_a, Dir2_b, Dir5)
