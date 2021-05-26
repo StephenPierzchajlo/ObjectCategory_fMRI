@@ -184,9 +184,7 @@ for (i in 1:length(list.files(parent.folder, recursive = FALSE))) {
     
     # Next participant.
     c <- c + 1
-    
   }
-  
 }
 
 
@@ -208,9 +206,7 @@ for (i in Participant_List) {
     dir.create(file.path(parent.folder, i), showWarnings = FALSE) # Participant directory.
     dir.create(paste0(file.path(parent.folder, i), "/anat"), showWarnings = FALSE) # anat sub-directory.
     dir.create(paste0(file.path(parent.folder, i), "/func"), showWarnings = FALSE) # func sub-directory.
-    
   }
-  
 }
 
 # Remove excess variables.
