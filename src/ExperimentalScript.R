@@ -129,7 +129,6 @@ for (i in 1:length(list.files(parent.folder, recursive = FALSE))) {
     # Where file is going.
     Dir1_a <- paste0("D:/ObjectCategory_fMRI/data/Regressors/", list.files(parent.folder, recursive = FALSE)[i])
     Dir2_a <- paste0(Dir1_a, "/")
-    #Dir2_a <- paste0(Dir1_a, "\\regressors\\")
     
      # Either: 1.write .csv file, or: 2. skip if exists in current directory:
     if (!file.exists(paste0(Dir2_a,"Modality.Congruency_Block_", j, "_Onsets.csv"))) {
